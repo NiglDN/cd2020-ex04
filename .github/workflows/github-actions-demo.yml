@@ -1,0 +1,12 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
+      - run: docker build -f Dockerfile -t niglmon/demo:latest ./
+      - run: GIT_SHA="$(git rev-parse --short HEAD)"
+      - run: docker tag niglmon/demo:latest niglmon/demo:$GIT_SHA
+      - run: docker push niglmon/demo:latest
+      - run: docker push niglmon/demo:$GIT_SHA
