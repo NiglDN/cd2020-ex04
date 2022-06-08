@@ -22,6 +22,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
-      - run: docker tag niglmon/demo:latest niglmon/demo:${{ github.sha }}
-      - run: docker push niglmon/demo:latest
-      - run: docker push niglmon/demo:${{ github.sha }}
+      - run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest ${{ secrets.DOCKER_HUB_USERNAME }}/demo:${{ github.sha }}
+      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
+      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:${{ github.sha }}
