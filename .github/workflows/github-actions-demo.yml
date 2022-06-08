@@ -21,7 +21,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
-      - run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest ${{ secrets.DOCKER_HUB_USERNAME }}/demo:${{ github.sha }}
-      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
-      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest , ${{ secrets.DOCKER_HUB_USERNAME }}/demo:${{ github.sha }}
