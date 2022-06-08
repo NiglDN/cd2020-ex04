@@ -4,7 +4,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER
+      - run: echo "REGISTRY_PASSWORD" | docker login --username niglmon
       - run: docker build -f Dockerfile -t niglmon/demo:latest ./
       - run: GIT_SHA="$(git rev-parse --short HEAD)"
       - run: docker tag niglmon/demo:latest niglmon/demo:$GIT_SHA
