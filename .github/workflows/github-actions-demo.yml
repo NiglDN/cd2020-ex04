@@ -4,7 +4,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }}
+      - run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u niglmon
       - run: docker build -f Dockerfile -t niglmon/demo:latest ./
       - run: GIT_SHA="$(git rev-parse --short HEAD)"
       - run: docker tag niglmon/demo:latest niglmon/demo:$GIT_SHA
