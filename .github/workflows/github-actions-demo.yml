@@ -10,8 +10,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - run: docker build -f Dockerfile -t niglmon/demo:latest ./
+      - run: docker build -f Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest ./
       - run: GIT_SHA="$(git rev-parse --short HEAD)"
-      - run: docker tag niglmon/demo:latest niglmon/demo:$GIT_SHA
-      - run: docker push niglmon/demo:latest
-      - run: docker push niglmon/demo:$GIT_SHA
+      - run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest ${{ secrets.DOCKER_HUB_USERNAME }}/demo:$GIT_SHA
+      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
+      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/demo:$GIT_SHA
