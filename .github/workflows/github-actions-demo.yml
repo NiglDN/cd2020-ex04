@@ -1,8 +1,5 @@
 name: GitHub Actions Demo
-on:
-  push:
-    branches:
-      - 'main'
+on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -24,7 +21,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: niglmon/demo:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/demo:latest
       - run: GIT_SHA="$(git rev-parse --short HEAD)"
       - run: docker tag niglmon/demo:latest niglmon/demo:$GIT_SHA
       - run: docker push niglmon/demo:latest
